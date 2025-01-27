@@ -1,4 +1,3 @@
-// index.js
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
@@ -14,8 +13,8 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Har 15 minute pe email bhejega
-cron.schedule('*/15 * * * *', async () => {
+// Send email every minute
+cron.schedule('* * * * *', async () => {
     try {
         await transporter.sendMail({
             from: process.env.EMAIL,
